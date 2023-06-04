@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-const CommandToTest = "./argo"
+const CommandToTest = "../argo"
 
 func TestXargsEchoIntegration(t *testing.T) {
 	testCases := []struct {

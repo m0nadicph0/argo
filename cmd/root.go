@@ -9,7 +9,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "argo",
-	Short: "A brief description of your application",
+	Short: "Constructs argument list and executes utility commands",
 	Run: func(cmd *cobra.Command, args []string) {
 		eng := &engine.Engine{Parser: parser.NewParser()}
 		err := eng.Run(args)
@@ -30,4 +30,5 @@ func Execute() {
 func init() {
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.Flags().SetInterspersed(false)
+	rootCmd.Flags().IntP("num-max-arg", "n", 5000, "Maximum number of arguments taken from standard input for each invocation")
 }
