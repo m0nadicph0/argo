@@ -11,7 +11,11 @@ var rootCmd = &cobra.Command{
 	Use:   "argo",
 	Short: "Constructs argument list and executes utility commands",
 	Run: func(cmd *cobra.Command, args []string) {
-		eng := &engine.Engine{Parser: parser.NewParser()}
+		maxArgsPerInvocation, _ := cmd.Flags().GetInt("num-max-arg")
+		eng := &engine.Engine{
+			Parser:               parser.NewParser(),
+			MaxArgsPerInvocation: maxArgsPerInvocation,
+		}
 		err := eng.Run(args)
 
 		if err != nil {

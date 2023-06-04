@@ -32,11 +32,25 @@ func TestXargsEchoIntegration(t *testing.T) {
 			cmd:            []string{"echo"},
 		},
 		{
-			name:           "multiple line input with echo and -n flag",
+			name:           "multiple line input with echo and two args per invocation",
 			inputData:      "1\n2\n3\n4\n5",
 			expectedOutput: "1 2\n3 4\n5\n",
 			xargsArgs:      []string{"-n", "2"},
 			cmd:            []string{"echo"},
+		},
+		{
+			name:           "multiple line input with echo and one arg per invocation",
+			inputData:      "1\n2\n3\n4\n5",
+			expectedOutput: "1\n2\n3\n4\n5\n",
+			xargsArgs:      []string{"-n", "1"},
+			cmd:            []string{"echo"},
+		},
+		{
+			name:           "multiple line input with echo -n and one arg per invocation",
+			inputData:      "1\n2\n3\n4\n5",
+			expectedOutput: "12345",
+			xargsArgs:      []string{"-n", "1"},
+			cmd:            []string{"echo", "-n"},
 		},
 	}
 
